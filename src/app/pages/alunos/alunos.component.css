@@ -1,0 +1,32 @@
+.row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.alunos-table{
+    background-color: coral;
+    list-style-type: none;
+    width: 284px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.alunos-table> li{
+    background-color: coral;
+    color: beige;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+    width: auto;
+    height: 48px;
+}
+
+.alunos-table> li:hover{
+    background-color: beige;
+    color: coral;
+    opacity: 0.9;
+    cursor: pointer;   
+}
+

@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Run Json Server on a new command propmt
+Run `json-server --watch json-server/db.json`
+
+## Run Node server
+Run `npm run start`

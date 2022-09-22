@@ -1,0 +1,14 @@
+<h1>Cursos Component</h1>
+
+<p>
+    Vídeos do portal 
+    <a href="{{nomePortal}}" target="_blank" rel="dofollow">{{nomePortal}}</a>
+</p>
+
+<h3> Lista de Cursos pelo Subscribable de Curso Service getCursos</h3>
+<ul class="curso-table">
+    <li [routerLink]="['/exercicios/cursos', curso.id]" *ngFor="let curso of cursos, let i = index">{{curso.name}}</li>
+</ul>
+
+<h3>Instancia do Criar Curso component no Curso Component</h3>
+<criar-curso></criar-curso>

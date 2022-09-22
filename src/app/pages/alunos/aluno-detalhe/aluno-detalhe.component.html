@@ -1,0 +1,8 @@
+<h3>Informações do Aluno</h3>
+<p>ID: {{aluno?.id}}</p>
+<p>Nome: {{aluno?.name}}</p>
+<p>Email: {{aluno?.email}}</p>
+
+<button (click)=" mostrarBtnEditar? editarContato() : VoltarParaAlunos()">
+{{ mostrarBtnEditar ? 'Editar' : 'Voltar' }}
+</button> <!--*ngIf="mostrarBtnEditar"-->

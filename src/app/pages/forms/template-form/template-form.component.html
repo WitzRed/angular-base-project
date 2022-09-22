@@ -1,0 +1,91 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="horizontal">
+    <div class="name-field">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="First Name" name="name"
+            [(ngModel)]="usuario.name" required #name="ngModel">
+        <div *ngIf="aplicaCSSErro(name)">
+            Nome válido é obrigatório.
+        </div>
+        <!-- <div>
+            {{nome.className}}
+        </div> -->
+
+    </div>
+
+    <div class="email-field">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="email@email.com" name="email"
+            [(ngModel)]="usuario.email"
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            required #email="ngModel">
+        <div *ngIf="aplicaCSSErro(email)">
+            Email válido é obrigatório.
+        </div>
+    </div>
+    <div ngModelGroup="endereco" class="endereco-content">
+            <div class="cep-field">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" placeholder="000.000-000" name="cep" ngModel #cep="ngModel"
+                    required
+                    (blur)="consultaCEP($event.target, f)">
+                <div *ngIf="aplicaCSSErro(cep)">
+                    CEP válido é obrigatório.
+                </div>
+            </div>
+        <br><br><br>
+        <div class="rua-field">
+            <label for="rua">Rua</label>
+            <input type="text" class="form-control" id="rua" placeholder="Rua" name="rua" ngModel required
+                #rua="ngModel">
+            <div *ngIf="aplicaCSSErro(rua)">
+                Rua/Quadra é obrigatória.
+            </div>
+        </div>
+
+        <div class="numero-field">
+            <label for="numero">Número</label>
+            <input type="text" class="form-control" id="numero" placeholder="000" name="numero" ngModel
+                #numero="ngModel" required>
+            <div *ngIf="aplicaCSSErro(numero)">
+                Número válido é obrigatório.
+            </div>
+        </div>
+
+        <div class="complement-field">
+            <label for="complemento">Complemento</label>
+            <input type="text" class="form-control" id="complemento" placeholder="apt, casa" name="complemento" ngModel
+                #complemento="ngModel">
+        </div>
+
+        <div class="bairro-field">
+            <label for="bairro">Bairro</label>
+            <input type="text" class="form-control" id="bairro" placeholder="bairro" name="bairro" ngModel required
+                #bairro="ngModel">
+            <div *ngIf="aplicaCSSErro(bairro)">
+                Bairro/Conjunto ou Setor é obrigatório.
+            </div>
+        </div>
+        <div class="cidade-field">
+            <label for="cidade">Cidade</label>
+            <input type="text" class="form-control" id="cidade" placeholder="cidade" name="cidade" ngModel required
+                #cidade="ngModel">
+            <div *ngIf="aplicaCSSErro(cidade)">
+                Cidade é obrigatória.
+            </div>
+        </div>
+
+        <div class="uf-field">
+            <label for="estado">Estado</label>
+            <input type="text" class="form-control" id="estado" placeholder="estado" name="estado" ngModel required
+                #estado="ngModel">
+            <div *ngIf="aplicaCSSErro(estado)">
+                Estado é obrigatório.
+            </div>
+        </div>
+    </div>
+    <div class="form-btn">
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    </div>
+</form>
+
+<app-form-debug [form]="f"></app-form-debug>

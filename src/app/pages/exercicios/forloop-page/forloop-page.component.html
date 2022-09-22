@@ -1,0 +1,89 @@
+<h1>Diretiva *ngFor</h1>
+
+<ul>
+    <li *ngFor="let curso of cursos, let i = index">
+        {{ i }} - {{curso}}
+    </li>
+</ul>
+
+<h2>Diretiva ngClass - em forloop component</h2>
+<h2>
+    <i class="glyphicon"
+    [class.glyphicon-star-empty]="!meuFavorito"
+    [class.glyphicon-star]="meuFavorito"
+    (click)="meuFavorito=!meuFavorito"></i>
+</h2>
+
+<h2>
+    <i class="glyphicon"
+    [class.glyphicon-star-empty]="!meuFavorito"
+    [class.glyphicon-star]="meuFavorito"
+    (click)="onClick()"></i>
+</h2>
+
+<h2>
+    <i class="glyphicon"
+    [ngClass]="{'glyphicon-star-empty':!meuFavorito,
+                'glyphicon-star': meuFavorito}"
+    (click)="onClick()"></i>
+</h2>
+
+<h2>Diretiva *ngStyle - em forloop component</h2>
+
+<h3> Styles com property binding (style binding)</h3>
+
+<button
+[style.backgroundColor]="ativo ? 'blue' : 'gray'"
+[style.color]=" ativo ? 'white' : 'black'"
+[style.fontWeight]=" ativo ? 'bold' : 'normal'"
+[style.fontSize]="ativo ? tamanhoFonte + 'px': '10px'" 
+(click)="ativo = !ativo">
+Mudar atributo 'ativo'
+</button>
+<br><br>
+<button
+[style.backgroundColor]="ativo ? 'blue' : 'gray'"
+[style.color]=" ativo ? 'white' : 'black'"
+[style.fontWeight]=" ativo ? 'bold' : 'normal'"
+[style.fontSize]="ativo ? tamanhoFonte + 'px': '10px'" 
+(click)="mudarAtivo()">
+{{prodDescription}}
+</button>
+<br><br>
+<input type="text" [(ngModel)]="tamanhoFonte">
+<input type="text" [(ngModel)]="prodDescription">
+<br>
+
+<h3> Styles com diretiva ngStyle</h3>
+
+<button
+[ngStyle] ="{'backgroundColor': (ativo ? 'blue' : 'gray'),
+            color: (ativo ? 'white' : 'black'),
+            fontWeight: (ativo ? 'bold' : 'normal'),
+            fontSize: (ativo ? tamanhoFonte + 'px': '10px')
+        }"
+(click)="mudarAtivo()">
+{{prodDescription}}
+</button>
+<br><br>
+<input type="text" [(ngModel)]="tamanhoFonte">
+<input type="text" [(ngModel)]="prodDescription">
+<br>
+
+<h2>Operador Elvis</h2>
+<p>Descrição: {{ tarefa.desc }}</p>
+<p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : ''}}</p>
+
+<p>Responsável: {{ tarefa.responsavel?.nome }}</p>
+
+<p>Responsável: {{ tarefa.responsavel?.usuario?.nome }}</p>
+
+<h1>Exemplo ngContent</h1>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <ng-content select=".titulo"></ng-content>
+    </div>
+    <div class="panel-body">
+        <ng-content select=".corpo"></ng-content>
+    </div>
+</div>

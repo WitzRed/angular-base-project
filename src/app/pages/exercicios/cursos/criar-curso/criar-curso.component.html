@@ -1,0 +1,13 @@
+<h2>Criar Cursos Component</h2>
+<h3>Adicionar Curso (cursos.service no criar-curso component)</h3>
+
+<input type="text" #cursoInput>
+<button (click)="onCriarCurso(cursoInput.value)">Criar curso</button>
+<button (click)="onAddExistingCurso()">Adicionar curso predefinido</button>
+
+<h3>Lista de Cursos (cursos.service no criar-curso component)</h3>
+<ul>
+    <li *ngFor="let curso of cursos, let i=index" id="i">
+        {{curso.name}}
+    </li>
+</ul>

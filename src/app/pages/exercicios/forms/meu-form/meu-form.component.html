@@ -1,0 +1,48 @@
+<h3>Meu-Form component</h3>
+<section class="two-way-data-binding"> 
+    <article>
+        <h3>Two-way data binding</h3>
+        <div>
+            <input type="text" 
+             (keyup) = "setInputVal()"
+             [value]="!setInputVal() ? nome : '' "
+             [placeholder]="setInputVal() ?  nome : ''"
+             (input)="nome = nameVal.value"
+             #nameVal
+            />
+
+            
+            <input type="text"
+               [(ngModel)]="nome"
+            />
+            <p>Você digitou: {{ nome }}</p>
+
+            <p>Meu nome é {{pessoa.nome}} e tenho {{pessoa.idade}} anos de idade.</p>
+            <div>
+                <input type="text" [(ngModel)]="pessoa.nome">
+                <input type="text" [(ngModel)]="pessoa.idade">
+            </div>
+
+        </div>
+
+        <h3> Data - Driven Form</h3>
+        <form [formGroup]="colorSet">
+            <select formControlName="color">
+              <option *ngFor="let color of colors" [ngValue]="color">
+                {{ color.name }}
+              </option>
+            </select>
+          </form>
+          
+          <div
+            [ngStyle]="{
+              'background-color': colorSet.value.color.code
+                ? colorSet.value.color.code
+                : 'black'
+            }"
+          >
+            {{ colorSet.value.color.code }}
+          </div>
+    </article>
+
+</section>

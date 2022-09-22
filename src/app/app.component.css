@@ -1,0 +1,55 @@
+.navbar{
+    background-color: rgba(211, 211, 211, 0.527);
+    padding: 10px;
+}
+
+.right{
+    position: absolute;
+    padding: 10px;
+    border: 2px solid black;
+    z-index: 1;
+    right: 10px;
+    top: 10px;
+}
+
+.right > a {
+    color: beige;
+    width: 50px;
+    text-align: justify;
+}
+
+#nav-mobile{
+    background-color: coral;
+    display: inline-block;
+    width: 100%;
+    height: 62px;
+    padding: 10px;
+
+
+}
+
+.navtab-item{
+    background-color: coral;
+    display: inline-block;
+    color: beige;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.navtab-item:hover{
+    background-color: beige;
+    color: coral;
+    opacity: 0.9;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.nav-active{
+    background-color: rgb(253, 168, 136);
+    color: rgb(246, 246, 246);
+    opacity: 0.9;
+}

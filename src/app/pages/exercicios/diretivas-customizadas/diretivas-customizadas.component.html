@@ -1,0 +1,40 @@
+<h1>Diretivas Customizadas</h1>
+
+<h3> pelo CSS</h3>
+<p style="background-color: yellow;">
+    Texto com fundo amarelo
+</p>
+
+<h3>Pela diretiva</h3>
+<p FundoAmarelo>
+    Texto com fundo amarelo
+</p>
+
+<button FundoAmarelo>Botão com fundo amarelo por diretiva</button>
+
+<h3>Por evento na diretiva com ElementRef</h3>
+<p highlightMouse>
+    Texto com highlight quando passo o mouse (evento na diretiva).
+</p>
+
+<h3>Por evento na diretiva com Renderer</h3>
+
+<p highlightMouse>
+    Texto com highlightMouse quando passo o mouse (evento na diretiva).
+</p>
+
+<h2>Mais diretivas customizadas</h2>
+<p hightlight [defaultBgColor]="'grey'" [highlightBgColor]="'darkred'">
+    Texto com highlight com cores customizadas.
+</p>
+
+<h3>Diretiva ngElse customizada</h3>
+
+<div *ngIf="mostrarCursos">
+    Lista de cursos aqui.
+</div>
+<div *ngElse="mostrarCursos">
+    Não Exitem cursos para serem exibidos.
+</div>
+<br>
+<button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>

@@ -1,0 +1,35 @@
+.success{
+    background-color: rgba(144, 238, 144, 0.541);
+}
+
+.info {
+    background-color: rgba(255, 255, 0, 0.541);
+}
+
+.warning{
+    background-color: rgba(255, 166, 0, 0.609);
+}
+
+.error{
+    background-color: rgba(139, 0, 0, 0.712);
+}
+
+.btn-change{
+    background-color: rgba(29, 29, 133, 0.596);
+    color: bisque;
+    text-align: center;
+    font-weight: bold;
+    font-family: sans-serif;
+    width: 100px;
+    height: 48px;
+}
+
+.btn-change:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.highlight{
+    background-color: rgba(255, 255, 0, 0.712);
+    font-weight: bold;
+}

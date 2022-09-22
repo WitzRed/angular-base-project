@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './pages/login/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'primeiro-projeto';
+
+  mostrarMenu: boolean = false;
+
+  constructor(private _authService: AuthService){}
+
+  ngOnInit(){
+    this._authService.mostrarmenuEmitter.subscribe(
+      (auth: boolean) => {
+        this.mostrarMenu = auth;
+      }
+    )
+  }
 }

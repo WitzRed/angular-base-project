@@ -1,0 +1,184 @@
+<form class="horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    
+    <app-input-field class="name-field" formControlName="name" [classCss]="aplicaCSSErro('name')"
+        type="text" id="name" label="Nome" [control]="$any(formulario.get('name'))" placeholder="First Name"
+    ></app-input-field>
+
+    <!-- <div class="name-field">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="First Name" formControlName="name">
+        <app-error-message [control]="$any(formulario.get('name'))" label="Nome">
+        </app-error-message>
+    </div> -->
+
+    <div class="email-field">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="email@email.com" formControlName="email">
+        <app-error-message [control]="$any(formulario.get('email'))" label="Email">
+        </app-error-message>
+        <div *ngIf="formulario.get('email').status === 'PENDING'">
+                Validando email...
+        </div>
+        <div *ngIf="formulario.get('email').status === 'VALID'">
+            Email válido!
+        </div>
+        <div *ngIf="formulario.get('email').hasError('emailInvalido')">
+            Email já cadastrado!
+        </div>
+    </div>
+
+    <div class="email-field" [ngClass]="{
+        'ng-invalid ng-touched': formulario.get('confirmarEmail').hasError('equalsTo')
+    }">
+        <label for="confirmarEmail">Confirmar Email</label>
+        <input type="email" class="form-control" id="confirmarEmail" placeholder="email@email.com" formControlName="confirmarEmail">
+        <div *ngIf="formulario.get('confirmarEmail').hasError('equalsTo')">
+            Emails não são iguais.
+        </div>
+    </div>
+
+
+
+    <div formGroupName="endereco" class="endereco-content">
+        <div class="cep-field">
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" id="cep" placeholder="000.000-000" formControlName="cep"
+                (blur)="consultaCEP()">
+            <div *ngIf="verificaRequired('endereco.cep')">
+                CEP válido é obrigatório.
+            </div>
+            <div *ngIf="formulario.get('endereco.cep').hasError('cepInvalido')">
+                CEP inválido.
+            </div>
+        </div>
+        <br><br><br>
+        <div class="rua-field" [ngClass]="aplicaCSSErro('endereco.rua')">
+            <label for="rua">Rua</label>
+            <input type="text" class="form-control" id="rua" placeholder="Rua" formControlName="rua">
+            <div *ngIf="verificaValidTouched('endereco.rua')">
+                Rua/Quadra é obrigatória.
+            </div>
+        </div>
+
+        <div class="numero-field">
+            <label for="numero">Número</label>
+            <input type="text" class="form-control" id="numero" placeholder="000" formControlName="numero">
+            <div *ngIf="verificaValidTouched('endereco.numero')">
+                Número válido é obrigatório.
+            </div>
+        </div>
+
+        <div class="complement-field">
+            <label for="complemento">Complemento</label>
+            <input type="text" class="form-control" id="complemento" placeholder="apt, casa" formControlName="complemento">
+        </div>
+
+        <div class="bairro-field">
+            <label for="bairro">Bairro</label>
+            <input type="text" class="form-control" id="bairro" placeholder="bairro" formControlName="bairro">
+            <div *ngIf="verificaValidTouched('endereco.bairro')">
+                Bairro/Conjunto ou Setor é obrigatório.
+            </div>
+        </div>
+        <div class="cidade-field">
+            <label for="cidade">Cidade</label>
+            <select class="form-control" id="cidade" formControlName="cidade">
+                <!-- usar | async depois de estados quando IEstados for Observable-->
+                <option *ngFor="let cidade of cidades" [value]="cidade.nome">{{cidade.nome}}</option>
+            </select>
+            <div *ngIf="verificaValidTouched('endereco.cidade')">
+                Cidade é obrigatória.
+            </div>
+        </div>
+
+        <div class="uf-field">
+            <label for="estado">Estado</label>
+            <select class="form-control" id="estado" formControlName="estado">
+                <!-- usar | async depois de estados quando IEstados for Observable-->
+                <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{estado.nome}}</option>
+            </select>
+            <div *ngIf="verificaValidTouched('endereco.estado')">
+                Estado é obrigatório.
+            </div>
+        </div>
+    </div>
+    <div class="cargos">
+        <label for="cargo">Cargo</label>
+        <select class="form-control" id="cargo" formControlName="cargo" [compareWith]="compararCargos">
+            <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{cargo.desc}}</option>
+        </select>
+    </div>
+
+    <div class="tecnologias">
+        <label for="tecnologias">Tecnologias</label>
+        <select  multiple class="form-control" id="tecnologias" formControlName="tecnologias" [compareWith]="compararTecnologias">
+            <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">{{tecnologia.desc}}</option>
+        </select>
+    </div>
+
+    <div class="newsletter">
+        <label class="control-label" for="newsletter">Newsletter</label>
+        <div id="newsletter" class="row">
+            <div class="col-sm-5" *ngFor="let item of newsletterOp">
+                <label class="radio-inline">
+                    <input type="radio" [value]="item.valor" formControlName="newsletter"/> {{ item.desc }}
+                </label>
+            </div>     
+        </div>
+    </div>
+
+    <div class="termos">
+        <div class="col-md-12">
+            <div class="checkbox" [ngClass]="{
+                'ng-invalid': formulario.get('termos').value !== true && formulario.get('termos').value !== null,
+                'ng-touched': formulario.get('termos').value !== null}">
+                <label for="termos" class="checkbox-inline">
+                    <input type="checkbox" formControlName="termos"> Aceito os termos.
+                </label>
+            </div>
+            <div *ngIf="verificaValidTouched('termos')">
+                Por favor, aceite os termos.
+            </div>
+        </div>
+    </div>
+
+    <div class="frameworks">
+        <div class="col-md-12">
+            <label for="frameworks">Frameworks</label>
+            <div id="frameworks" class="row"
+                [ngClass]="{
+                    'ng-invalid ng-touched': !validateFieldArray(formulario.get('frameworks')['controls'])
+                }"
+            > 
+                <div class="checkbox" class="col-sm-3" formArrayName="frameworks"
+                    *ngFor="let item of formulario.get('frameworks')['controls'], let i = index">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" [formControlName]="i"> {{ frameworks[i] }}
+                    </label>
+                </div>
+                <div *ngIf="!formulario.get('frameworks').valid">
+                    Selecione mais de uma opção.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="buttons">
+        <div class="form-btn">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+            <!---[disabled]="!formulario.valid"-->
+        
+            <button class="btn btn-info" (click)="setCargo()">Novo Cargo</button>
+            <button class="btn btn-info" (click)="setTecnologia()">Nova Tecnologia</button>
+            <button class="btn" (click)="resetar()">Cancelar</button>
+        </div>
+    </div>
+</form>
+
+<div class="form-btn">
+    <button class="btn" (click)="downloadTabloid()">download</button>
+</div>
+
+
+<app-form-debug [form]="formulario"></app-form-debug>

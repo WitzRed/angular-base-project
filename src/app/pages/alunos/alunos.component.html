@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col" [style.grid-column]="1">
+        <p>Lista de Alunos</p>
+        
+        <ul class="alunos-table">
+            <li *ngFor="let aluno of alunos, let i=index" [routerLink]="[aluno.id]">{{aluno.name}}</li>
+        </ul>
+    </div>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+</div>

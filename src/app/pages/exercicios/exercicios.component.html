@@ -1,0 +1,99 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<h1>{{ title }} works!</h1>
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<meu-primeiro-component></meu-primeiro-component>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<meu-segundo-component></meu-segundo-component>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<criar-curso></criar-curso>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<app-cursos></app-cursos>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<app-ciclo [valorInicial]="valor" *ngIf="!deletarCiclo"></app-ciclo>
+
+<button (click)="mudarValor()">Mudar Valor</button>
+
+<button (click)="destruirClico()">Deletar</button>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<h2>*ngIf</h2>
+<div *ngIf="cursos.length>0">
+   Lista de cursos aqui.
+</div>
+<div *ngIf="cursos.length == 0">
+   Não exitem cursos para serem listados.
+</div>
+<br>
+<div *ngIf="mostrarCursos">
+   Lista de cursos aqui.
+</div>
+<div *ngIf="!mostrarCursos">
+   Clique no botão para ver a lista de cursos.
+</div>
+<button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>
+<br>
+<div [hidden]="!mostrarCursos">
+   Lista de cursos aqui.
+</div>
+<div [hidden]="mostrarCursos">
+   Clique no botão para ver a lista de cursos.
+</div>
+<button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button> 
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<app-data-binding></app-data-binding>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<app-switch-page></app-switch-page>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<app-forloop-page>
+  <div class="titulo">Título do Painel</div>
+  
+  <div class="corpo">
+     <p>Canteúdo passado para o componente.</p>
+  </div>
+  <div class="corpo">
+     <p>Canteúdo passado para o componente 2.</p>
+  </div>
+</app-forloop-page>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<app-diretivas-customizadas></app-diretivas-customizadas>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<galeria></galeria>
+<br>
+
+<h3> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </h3>
+<exemplos-pipes></exemplos-pipes>
+<br>
+
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+

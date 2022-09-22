@@ -1,0 +1,21 @@
+<h3>Criar/Editar Aluno</h3>
+<div class="col">
+    <div class="row">
+        <div class="input-field">
+            <label for="disabled">#</label>
+            <input  disable [(ngModel)]="aluno.id" id="disabled" type="text">           
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field">
+            <label for="nome" class="active">Nome</label>
+            <input id="nome" [(ngModel)]="aluno.name" class="validate" (input)="onInput()">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field">
+            <label for="email" class="active">Email</label>
+            <input id="email" [(ngModel)]="aluno.email" class="validate">
+        </div>
+    </div>
+</div>

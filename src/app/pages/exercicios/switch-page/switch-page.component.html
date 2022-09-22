@@ -1,0 +1,62 @@
+<h1>Exemplo de Switch e SwitchCase</h1>
+<nav class="navbar">
+    <div class="tabs">
+        <a class="tab-item" [class.active]="aba == 'home'" (click)="aba = 'home'">Home</a>
+
+        <a class="tab-item" [class.active]="aba == 'mapa' " (click)="aba = 'mapa'">Mapa</a>
+
+        <a class="tab-item" [class.active]="aba == 'pricing' " (click)="aba = 'pricing'">Pricing</a>
+
+        <a class="tab-item" [class.active]="aba == 'about' " (click)="aba = 'about'">About</a>
+    </div>
+    <div class="tab-content" [ngSwitch]="aba">
+        <div *ngSwitchCase="'home'">
+            <img src="./assets/mapa/mapa09.png" alt="Mapa dos Estados Unidos e América Central">
+            <img src="./assets/mapa/mapa06.png" alt="Mapa da América do Sul">
+        </div>
+        <div *ngSwitchCase="'mapa'">
+            <img src="./assets/mapa/mapa03.png" alt="Mapa do Canada">
+            <img src="./assets/mapa/mapa07.png" alt="Mapa da Groelândia e Ecandinávia">
+            <img src="./assets/mapa/mapa05.png" alt="Mapa da Rússia">
+            <br>
+            <img src="./assets/mapa/mapa09.png" alt="Mapa dos Estados Unidos e América Central">
+            <img src="./assets/mapa/mapa01.png" alt="Mapa da Europa e norte da África">
+            <img src="./assets/mapa/mapa08.png" alt="Mapa da Ásia">
+            <br>
+            <img src="./assets/mapa/mapa06.png" alt="Mapa da América do Sul">
+            <img src="./assets/mapa/mapa02.png" alt="Mapa do Sul da África">
+            <img src="./assets/mapa/mapa04.png" alt="Mapa da Austrália">
+        </div>
+
+        <div *ngSwitchCase="'pricing'">
+            <img src="./assets/mapa/mapa01.png" alt="Mapa da Europa e norte da África">
+            <img src="./assets/mapa/mapa04.png" alt="Mapa da Austrália">
+        </div>
+
+        <div *ngSwitchCase="'about'">
+            <article>
+                <h1>História da DS Consulting</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores aut sint adipisci assumenda
+                    obcaecati id nostrum, quisquam vitae, quod voluptates sequi a voluptatum quia! Dolor, voluptatibus.
+                    Deserunt eveniet aliquid tenetur?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores aut sint adipisci assumenda
+                    obcaecati id nostrum, quisquam vitae, quod voluptates sequi a voluptatum quia! Dolor, voluptatibus.
+                    Deserunt eveniet aliquid tenetur?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores aut sint adipisci assumenda
+                    obcaecati id nostrum, quisquam vitae, quod voluptates sequi a voluptatum quia! Dolor, voluptatibus.
+                    Deserunt eveniet aliquid tenetur?
+                </p>
+            </article>
+        </div>
+        <div *ngSwitchDefault>
+            <img src="./assets/mapa/mapa09.png" alt="Mapa dos Estados Unidos e América Central">
+            <img src="./assets/mapa/mapa06.png" alt="Mapa da América do Sul">
+        </div>
+    </div>
+    <p>{{id}}</p>
+</nav>

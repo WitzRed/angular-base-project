@@ -1,0 +1,51 @@
+.ng-invalid.ng-touched:not(form){
+    border: 1px solid tomato;
+}
+
+.horizontal{
+    padding-top: 10px;
+}
+
+.required-field{
+    color: tomato;
+}
+
+.form-btn{
+    margin-top: 10px;
+}
+
+
+
+.cep-field{
+    grid-area: cep;
+}
+.rua-field{
+    grid-area: rua;
+}
+.numero-field{
+    grid-area: numero;
+}
+.complement-field{
+    grid-area: complement;
+}
+
+.bairro-field{
+    grid-area: bairro;
+}
+.cidade-field{
+    grid-area: cidade;
+}
+.uf-field{
+    grid-area: uf;
+}
+
+.endereco-content{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+                "cep cep rua rua rua rua"
+                "numero complement complement .......  .......  ....... "
+                "bairro cidade uf ....... ....... ....... ";
+}

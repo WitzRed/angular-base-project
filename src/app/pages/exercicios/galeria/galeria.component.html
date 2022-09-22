@@ -1,0 +1,9 @@
+<h2>Servico de Imagens</h2>
+<div *ngFor = "let imagem of galeria.imagens, let i= index"
+     style="display: inline">
+    <img [src]="imagem">
+    <br  *ngIf="(i+1)%3 === 0">
+</div>
+<!-- <ul>
+    <li *ngFor = "let imagem of galeria.imagens"></li>
+</ul> -->
